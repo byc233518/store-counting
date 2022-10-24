@@ -3,10 +3,10 @@ const router = new Router({
   prefix: '/api'
 })
 
-const ArticleController = require('../controllers/article')
+const StockController = require('../controllers/stock')
 
-router.post('/article', ArticleController.create)
+router.post('/stock', StockController.create)
 
-router.get('/article/:id', ArticleController.detail)
+router.get('/stock/:id', StockController.detail)
 
 module.exports = router

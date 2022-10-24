@@ -1,12 +1,12 @@
-const ArticleModel = require('../modules/article')
+const StockModel = require('../modules/stock')
 
-class articleController {
+class stockController {
 	static async create(ctx) {
 		let req = ctx.request.body
-		if(req.title && req.content) {
+		if(req.name && req.code && req.qty) {
 			try {
-				const rec = await ArticleModel.createArticle(req)
-				const data = await ArticleModel.getArticleDetail(rec.id)
+				const rec = await StockModel.createStock(req)
+				const data = await StockModel.getStockDetail(rec.id)
 
 				ctx.response.status = 200
 				ctx.body = {
@@ -35,7 +35,7 @@ class articleController {
 		let id = ctx.params.id
 		if(id) {
 			try {
-				const data = await ArticleModel.getArticleDetail(id)
+				const data = await StockModel.getStockDetail(id)
 
 				ctx.response.status = 200
 				ctx.body = {
@@ -61,4 +61,4 @@ class articleController {
 	}
 }
 
-module.exports = articleController
+module.exports = stockController
